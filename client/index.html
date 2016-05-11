@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible", content="IE=edge,chrome=1">
+    <meta name="viewport", content="width=device-width, initial-scale=1.0">
+
+    <title>Mugilny</title>
+
+    <link rel="stylesheet" href="app/app.css">
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/main/kartta-controller.js"></script>
+    <script src="app/js/angular-leaflet-directive.js"></script>
+  </head>
+
+  <body ng-app="mugilnyApp">
+
+
+    <div ng-controller="KarttaController">
+      <leaflet class="angular-leaflet-map" height="1000px" width="100%" lf-center="center" markers="markers" center="futuCenter"></leaflet>
+    </div>
+
+  </body>
+</html>

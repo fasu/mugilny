@@ -1,0 +1,22 @@
+{
+  "name": "mugilny",
+  "version": "1.0.0",
+  "description": "Kuka mukil ny?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fasu/mugilny.git"
+  },
+  "author": "Teppo Lindell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fasu/mugilny/issues"
+  },
+  "homepage": "https://github.com/fasu/mugilny#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
