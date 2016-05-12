@@ -8,7 +8,8 @@ var mugilnyApp = angular.module('mugilnyApp', [
     'leaflet-directive',
     'karttaController',
     'mugiService',
-    'underscore'
+    'underscore',
+    'ngGeolocation'
   ])
   .run(['$rootScope', function ($rootScope) {
     $rootScope.appName = 'mugilnyApp';

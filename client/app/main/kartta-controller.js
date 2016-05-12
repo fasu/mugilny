@@ -1,6 +1,10 @@
 var karttaController = angular.module('karttaController', []);
 
-karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', function($scope, Mugit, _) {
+karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geolocation', function($scope, Mugit, _, $geolocation) {
+  $geolocation.getCurrentPosition().then(function(position) {
+    $scope.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude, zoom: 15 };
+  });
+
   $scope.markers = new Array();
   $scope.markers.push({
     lat: 61.498707,
@@ -12,22 +16,22 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', functi
 
   Mugit.viimeisimmat().success(function(data) {
     console.log(data);
-    _.forEach(data.checkins.items, function(venue) {
-      console.log(venue);
+    _.forEach(data.checkins, function(checkin) {
+      console.log(checkin);
       $scope.markers.push({
-        lat: venue.venue.location.lat,
-        lng: venue.venue.location.lng,
-        message: "The Futurice is here",
+        lat: checkin.location.lat,
+        lng: checkin.location.lng,
+        message: "Checkinid: " + checkin.checkinid,
         draggable: false
       });
     });
   });
 
   angular.extend($scope, {
-      futuCenter: {
+      mapCenter: {
         lat: 61.498707,
         lng: 23.756789,
-        zoom: 12
+        zoom: 15
       },
       defaults: {
         scrollWheelZoom: true
