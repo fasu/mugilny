@@ -3,20 +3,20 @@
     {
       "checkinid": 1,
       "location": {
-        "lat": 61.498607,
+        "lat": 61.499607,
         "lng": 23.756789
       }
     }, {
       "checkinid": 2,
       "location": {
-        "lat": 61.498707,
+        "lat": 61.478707,
         "lng": 23.756689
       }
     }, {
       "checkinid": 3,
       "location": {
         "lat": 61.498717,
-        "lng": 23.756719
+        "lng": 23.766719
       }
     }]
 }

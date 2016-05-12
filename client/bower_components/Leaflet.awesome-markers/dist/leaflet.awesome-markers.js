@@ -26,7 +26,7 @@
             shadowAnchor: [10, 12],
             shadowSize: [36, 16],
             className: 'awesome-marker',
-            prefix: 'glyphicon',
+            prefix: 'fa',
             spinClass: 'fa-spin',
             extraClasses: '',
             icon: 'home',
@@ -114,12 +114,9 @@
             return div;
       }
     });
-        
+
     L.AwesomeMarkers.icon = function (options) {
         return new L.AwesomeMarkers.Icon(options);
     };
 
 }(this, document));
-
-
-

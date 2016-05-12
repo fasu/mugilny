@@ -1,8 +1,9 @@
 var karttaController = angular.module('karttaController', []);
 
 karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geolocation', function($scope, Mugit, _, $geolocation) {
+
   $geolocation.getCurrentPosition().then(function(position) {
-    $scope.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude, zoom: 15 };
+    $scope.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude, zoom: 13 };
   });
 
   $scope.markers = new Array();
@@ -15,14 +16,17 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geol
   });
 
   Mugit.viimeisimmat().success(function(data) {
-    console.log(data);
     _.forEach(data.checkins, function(checkin) {
-      console.log(checkin);
       $scope.markers.push({
         lat: checkin.location.lat,
         lng: checkin.location.lng,
         message: "Checkinid: " + checkin.checkinid,
-        draggable: false
+        draggable: false,
+        icon: {
+          type: "awesomeMarker",
+          icon: "fa-beer",
+          markerColor: "orange"
+        }
       });
     });
   });
@@ -31,7 +35,7 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geol
       mapCenter: {
         lat: 61.498707,
         lng: 23.756789,
-        zoom: 15
+        zoom: 13
       },
       defaults: {
         scrollWheelZoom: true
