@@ -2,10 +2,6 @@ var karttaController = angular.module('karttaController', []);
 
 karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geolocation', function($scope, Mugit, _, $geolocation) {
 
-  $geolocation.getCurrentPosition().then(function(position) {
-    $scope.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude, zoom: 13 };
-  });
-
   $scope.markers = new Array();
   $scope.markers.push({
     lat: 61.498707,
@@ -15,19 +11,13 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geol
     draggable: false
   });
 
+  $geolocation.getCurrentPosition().then(function(position) {
+    $scope.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude, zoom: 13 };
+  });
+
   Mugit.viimeisimmat().success(function(data) {
     _.forEach(data.checkins, function(checkin) {
-      $scope.markers.push({
-        lat: checkin.location.lat,
-        lng: checkin.location.lng,
-        message: "Checkinid: " + checkin.checkinid,
-        draggable: false,
-        icon: {
-          type: "awesomeMarker",
-          icon: "fa-beer",
-          markerColor: "orange"
-        }
-      });
+      $scope.markers.push(checkinAsMarker(checkin));
     });
   });
 
@@ -41,4 +31,19 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geol
         scrollWheelZoom: true
       }
   });
+
+  function checkinAsMarker(checkin) {
+    return {
+      lat: checkin.location.lat,
+      lng: checkin.location.lng,
+      message: "Checkinid: " + checkin.checkinid,
+      draggable: false,
+      icon: {
+        type: "awesomeMarker",
+        icon: "fa-beer",
+        markerColor: "orange"
+      }
+    }
+  }
+
 }]);
