@@ -5,3 +5,7 @@ html {
 .angular-leaflet-map {
   height: 100%;
 }
+
+.navbar {
+  margin-bottom: 0px !important;
+}

@@ -33,6 +33,17 @@
 
   <body ng-app="mugilnyApp">
 
+    <div id="mugilny-menu" class="navbar navbar-default " role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header"><a class="navbar-brand" href="#">Mugilny</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-menubuilder">
+                <ul class="nav navbar-nav navbar-right"><img src="app/img/pbu_40_grey.png" /></ul>
+            </div>
+        </div>
+    </div>
 
     <div ng-controller="KarttaController">
       <leaflet class="angular-leaflet-map" height="900px" width="100%" lf-center="mapCenter" markers="markers" center="mapCenter" paths="vectorit"></leaflet>
