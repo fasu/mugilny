@@ -7,19 +7,12 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geol
     lat: 61.498707,
     lng: 23.756789,
     message: "The Futurice is here",
-    focus: true,
+    focus: false,
     draggable: false
   });
 
   $geolocation.getCurrentPosition().then(function(position) {
-    $scope.vectorit["cntr"] = {
-      type: "circle",
-      radius: 1000,
-      latlngs: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-      }
-    };
+    $scope.vectorit["searchRadius"] = circlePath(position.coords.latitude, position.coords.longitude);
     $scope.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude, zoom: 13 };
   });
 
@@ -39,17 +32,24 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geol
         scrollWheelZoom: true
       },
       vectorit: {
-        cntr: {
-          type: "circle",
-          radius: 1000,
-          latlngs: {
-              lat: 61.498707,
-              lng: 23.756789
-          }
-        }
+        searchRadius: circlePath(61.498707, 23.756789)
       }
 
   });
+
+
+
+  function circlePath(latitude, longitude) {
+    return {
+      type: "circle",
+      radius: 1000,
+      latlngs: {
+          lat: latitude,
+          lng: longitude
+      },
+      weight: 1
+    }
+  }
 
   function checkinAsMarker(checkin) {
     return {
