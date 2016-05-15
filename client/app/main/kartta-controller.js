@@ -13,6 +13,7 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geol
 
   $geolocation.getCurrentPosition().then(function(position) {
     $scope.vectorit["searchRadius"] = circlePath(position.coords.latitude, position.coords.longitude);
+    $scope.vectorit["userPosition"] = circleMarkerPath(position.coords.latitude, position.coords.longitude);
     $scope.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude, zoom: 13 };
   });
 
@@ -32,13 +33,22 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geol
         scrollWheelZoom: true
       },
       vectorit: {
-        searchRadius: circlePath(61.498707, 23.756789)
+        searchRadius: circlePath(61.498707, 23.756789),
+        userPosition: circleMarkerPath(61.498707, 23.756789)
       }
 
   });
 
-
-
+  function circleMarkerPath(latitude, longitude) {
+    return {
+      type: "circleMarker",
+      latlngs: {
+          lat: latitude,
+          lng: longitude
+      },
+      radius: 5
+    }
+  }
   function circlePath(latitude, longitude) {
     return {
       type: "circle",
