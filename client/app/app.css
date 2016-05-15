@@ -2,6 +2,12 @@ html {
   height: 100%;
 }
 
+.mapContainer {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+} 
+
 .angular-leaflet-map {
   height: 100%;
 }
