@@ -15,10 +15,9 @@ karttaController.controller("KarttaController", [ '$scope', 'Mugit', '_', '$geol
     $scope.vectorit["searchRadius"] = circlePath(position.coords.latitude, position.coords.longitude);
     $scope.vectorit["userPosition"] = circleMarkerPath(position.coords.latitude, position.coords.longitude);
     $scope.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude, zoom: 13 };
-  },
-    function(error) {
-      console.log("ei geolocationia");
-    });
+  }, function(error) {
+        // GeoIP?
+  });
 
   Mugit.viimeisimmat().success(function(data) {
     _.forEach(data.checkins, function(checkin) {
